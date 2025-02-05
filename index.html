@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questões - Desafio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #ff00cc;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: hsl(280, 100%, 50%);
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+  </style>
+  <script>
+    function carregarQuestao(numero, btn) {
+      const script = document.createElement('script');
+      script.src = `questao_${numero}.js`;
+      script.onerror = () => alert(`Erro ao carregar o arquivo questao_${numero}.js`);
+      document.body.appendChild(script);
+      alert(`Questão ${numero} em execução...`);
+      btn.disabled = true;
+      const message = document.createElement('p');
+      message.textContent = `Para executar a Questão ${numero} novamente, recarregue a página.`;
+      document.body.appendChild(message);
+    }
+  </script>
+</head>
+<body>
+  <h1>Desafio 01 - Trilhas Inova Maranhão</h1>
+  <div class="container">
+    <script>
+      for (let i = 1; i <= 15; i++) {
+        document.write(`<button onclick="carregarQuestao(${i}, this)">Questão ${i}</button>`);
+      }
+    </script>
+  </div>
+  <div class="footer">
+    Feito por: Thallyson Gabriel M. C. Fontenele<br>
+    <a href="https://github.com/thallyson1997" target="_blank">Meu GitHub</a>
+  </div>
+</body>
+</html>
